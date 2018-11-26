@@ -19,8 +19,14 @@ error_reporting(E_ALL);
  *
  */
 function new_route($route_uri, $request_type){
+    echo $route_uri;
+    echo $request_type;
     $route_uri_expl = array_filter(explode('/', $route_uri));
+    print_r($route_uri_expl);
     $current_path_expl = array_filter(explode('/',parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH)));
+    print_r($current_path_expl);
+    echo $_SERVER['REQUEST_URI'];
+    echo PHP_URL_PATH;
     if ($route_uri_expl == $current_path_expl && $_SERVER['REQUEST_METHOD'] == strtoupper($request_type)) {
         return True;
     }
